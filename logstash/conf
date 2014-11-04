@@ -1,0 +1,14 @@
+input {
+  lumberjack {
+    port => 6789
+    ssl_certificate => "/etc/logstash/server.crt"
+    ssl_key => "/etc/logstash/server.key"
+  }
+}
+
+output {
+  elasticsearch {
+    host => elasticsearch
+    protocol => http
+  }
+}

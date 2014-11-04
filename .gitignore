@@ -1,0 +1,4 @@
+nginx/htpasswd
+logstash/server.key
+logstash/server.crt
+elasticsearch/data

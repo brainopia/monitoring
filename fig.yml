@@ -1,0 +1,32 @@
+elasticsearch:
+  build: elasticsearch
+  volumes:
+    - elasticsearch/elasticsearch.yml:/opt/elasticsearch/config/elasticsearch.yml
+    - elasticsearch/data:/data
+
+logstash:
+  image: smartprocure/logstash
+  command: -f /etc/logstash/conf
+  links:
+    - elasticsearch
+  volumes:
+    - logstash:/etc/logstash
+
+kibana:
+  build: kibana
+  links:
+    - elasticsearch
+  volumes:
+    - kibana/kibana.yml:/opt/kibana/config/kibana.yml
+
+nginx:
+  image: dockerfile/nginx
+  command: nginx
+  links:
+    - kibana
+  ports:
+    - 5601:5601
+  volumes:
+    - nginx/auth.conf:/etc/nginx/sites-enabled/default
+    - nginx/htpasswd:/etc/nginx/htpasswd
+
