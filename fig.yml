@@ -9,6 +9,8 @@ logstash:
   command: -f /etc/logstash/conf
   links:
     - elasticsearch
+  ports:
+    - 6789:6789
   volumes:
     - logstash:/etc/logstash
 
