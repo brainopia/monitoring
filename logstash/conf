@@ -9,7 +9,7 @@ input {
 filter {
   if [type] == "nginx-access" {
     grok {
-      patterns_dir => "./patterns",
+      patterns_dir => "./patterns"
       match => [ "message", "%{NGINX_ACCESS}" ]
     }
     geoip {
