@@ -6,6 +6,18 @@ input {
   }
 }
 
+filter {
+  if [type] == "nginx-access" {
+    grok {
+      patterns_dir => "./patterns",
+      match => [ "message", "%{NGINX_ACCESS}" ]
+    }
+    geoip {
+      source => "client_ip"
+    }
+  }
+}
+
 output {
   elasticsearch {
     host => elasticsearch
