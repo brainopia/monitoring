@@ -3,3 +3,4 @@ path:
   logs: /data/log
   plugins: /data/plugins
   work: /data/work
+indices.fielddata.cache.size: 40%
