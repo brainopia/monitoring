@@ -6,7 +6,7 @@ elasticsearch: "http://elasticsearch:9200"
 
 # Kibana uses an index in Elasticsearch to store saved searches, visualizations
 # and dashboards. It will create an new index if it doesn't already exist.
-kibanaIndex: "kibana-int"
+kibanaIndex: ".kibana"
 
 # Applications loaded and included into Kibana. Use the settings below to
 # customize the applications and thier names.
@@ -18,6 +18,9 @@ apps:
 
 # The default application to load.
 defaultAppId: "discover"
+
+request_timeout: 60
+shard_timeout: 30000
 
 bundledPluginIds:
  - plugins/dashboard/index
