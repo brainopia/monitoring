@@ -3,6 +3,8 @@ elasticsearch:
   volumes:
     - elasticsearch/elasticsearch.yml:/opt/elasticsearch/config/elasticsearch.yml
     - elasticsearch/data:/data
+  environment:
+    ES_HEAP_SIZE:
 
 logstash:
   image: smartprocure/logstash
