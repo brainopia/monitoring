@@ -1,1 +1,1 @@
-NGINX_ACCESS %{IPV4:client_ip} - %{NOTSPACE} \[%{HTTPDATE:time}\] "%{WORD:verb} %{URIPATHPARAM:request} HTTP/%{NUMBER:http_version}" %{INT:response} %{INT:bytes} %{QS:referer} %{QS:user_agent}
+NGINX_ACCESS %{IPV4:client_ip} - %{NOTSPACE} \[%{HTTPDATE:time}\] %{QS:request} %{INT:status} %{INT:bytes} %{QS:referer} %{QS:user_agent}
