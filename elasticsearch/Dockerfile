@@ -5,6 +5,6 @@ RUN wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elastics
     mv ./elasticsearch-1.4.0 /opt/elasticsearch && \
     rm ./elasticsearch-1.4.0.tar.gz
 
-RUN /opt/elasticsearch/bin/plugin -i royrusso/elasticsearch-HQ && /opt/elasticsearch/bin/plugin -i lmenezes/elasticsearch-kopf
+RUN /opt/elasticsearch/bin/plugin -i royrusso/elasticsearch-HQ && /opt/elasticsearch/bin/plugin -i lmenezes/elasticsearch-kopf/1.2
 
 CMD ["/opt/elasticsearch/bin/elasticsearch"]
