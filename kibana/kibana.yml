@@ -18,3 +18,11 @@ apps:
 
 # The default application to load.
 defaultAppId: "discover"
+
+bundledPluginIds:
+ - plugins/dashboard/index
+ - plugins/discover/index
+ - plugins/settings/index
+ - plugins/table_vis/index
+ - plugins/vis_types/index
+ - plugins/visualize/index
