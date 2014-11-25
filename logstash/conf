@@ -15,7 +15,7 @@ filter {
 
     geoip {
       source => "client_ip"
-      fields => ["city_name", "country_code2"]
+      fields => ["city_name", "country_code2", "latitude", "longitude"]
     }
 
     date {
