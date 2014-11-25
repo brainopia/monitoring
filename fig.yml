@@ -34,3 +34,11 @@ nginx:
     - nginx/auth.conf:/etc/nginx/sites-enabled/default
     - nginx/htpasswd:/etc/nginx/htpasswd
 
+influxdb:
+  image: systemli/influxdb
+  ports:
+    - 8086:8086
+    - 2003:2003 
+  volumes:
+    - influxdb/data:/data
+    - influxdb/config.toml:/config/config.toml
