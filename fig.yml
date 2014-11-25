@@ -42,3 +42,16 @@ influxdb:
   volumes:
     - influxdb/data:/data
     - influxdb/config.toml:/config/config.toml
+
+grafana:
+  image: tutum/grafana
+  ports:
+    - 5602:80
+  volumes:
+    - README.md:/.basic_auth_configured
+    - nginx/htpasswd:/app/.htpasswd
+  environment:
+    INFLUXDB_HOST:
+    INFLUXDB_NAME: graphite
+    INFLUXDB_USER:
+    INFLUXDB_PASS:
