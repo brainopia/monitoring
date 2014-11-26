@@ -56,3 +56,4 @@ grafana:
     INFLUXDB_NAME: graphite
     INFLUXDB_USER:
     INFLUXDB_PASS:
+    INFLUXDB_IS_GRAFANADB: true
