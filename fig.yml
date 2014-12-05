@@ -39,13 +39,13 @@ influxdb:
   ports:
     - 8083:8083
     - 8086:8086
-    - 2003:2003 
+    - 2003:2003
   volumes:
     - influxdb/data:/data
     - influxdb/config.toml:/config/config.toml
 
 grafana:
-  image: tutum/grafana
+  build: grafana
   ports:
     - 5602:80
   volumes:
