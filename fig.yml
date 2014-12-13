@@ -15,6 +15,8 @@ logstash:
     - 6789:6789
   volumes:
     - logstash:/etc/logstash
+  environment:
+    LS_HEAP_SIZE:
 
 kibana:
   build: kibana
