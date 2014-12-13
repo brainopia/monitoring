@@ -7,7 +7,7 @@ input {
 }
 
 filter {
-  if [type] == "nginx-access" {
+  if [type] in ["nginx-access", "nginx-static-access"] {
     grok {
       patterns_dir => "/etc/logstash/patterns"
       match => [ "message", "%{NGINX_ACCESS}" ]
