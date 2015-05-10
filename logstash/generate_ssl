@@ -1,8 +1,4 @@
 #!/bin/sh
 
-openssl genrsa -out server.key 2048
-openssl req -new -key server.key -batch -out server.csr
-openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt
-rm server.csr
-mv server.key logstash/
-mv server.crt logstash/
+openssl req -x509 -subj '/CN=*.example.org/' -nodes -newkey rsa:2048 -keyout logstash-forwarder.key -out logstash-forwarder.crt
+mv logstash-forwarder.* logstash/

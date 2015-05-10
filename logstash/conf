@@ -1,8 +1,8 @@
 input {
   lumberjack {
     port => 6789
-    ssl_certificate => "/etc/logstash/server.crt"
-    ssl_key => "/etc/logstash/server.key"
+    ssl_certificate => "/etc/logstash/logstash-forwarder.crt"
+    ssl_key => "/etc/logstash/logstash-forwarder.key"
   }
 }
 
