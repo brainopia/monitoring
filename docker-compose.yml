@@ -1,8 +1,8 @@
 elasticsearch:
   build: elasticsearch
   volumes:
-    - elasticsearch/elasticsearch.yml:/opt/elasticsearch/config/elasticsearch.yml
-    - elasticsearch/data:/data
+    - ./elasticsearch/elasticsearch.yml:/opt/elasticsearch/config/elasticsearch.yml
+    - ./elasticsearch/data:/data
   environment:
     ES_HEAP_SIZE:
 
@@ -14,7 +14,7 @@ logstash:
   ports:
     - 6789:6789
   volumes:
-    - logstash:/etc/logstash
+    - ./logstash:/etc/logstash
   environment:
     LS_HEAP_SIZE:
 
@@ -23,7 +23,7 @@ kibana:
   links:
     - elasticsearch
   volumes:
-    - kibana/kibana.yml:/opt/kibana/config/kibana.yml
+    - ./kibana/kibana.yml:/opt/kibana/config/kibana.yml
 
 nginx:
   image: dockerfile/nginx
@@ -33,8 +33,8 @@ nginx:
   ports:
     - 5601:5601
   volumes:
-    - nginx/auth.conf:/etc/nginx/sites-enabled/default
-    - nginx/htpasswd:/etc/nginx/htpasswd
+    - ./nginx/auth.conf:/etc/nginx/sites-enabled/default
+    - ./nginx/htpasswd:/etc/nginx/htpasswd
 
 influxdb:
   image: systemli/influxdb
@@ -43,16 +43,16 @@ influxdb:
     - 8086:8086
     - 2003:2003
   volumes:
-    - influxdb/data:/data
-    - influxdb/config.toml:/config/config.toml
+    - ./influxdb/data:/data
+    - ./influxdb/config.toml:/config/config.toml
 
 grafana:
   build: grafana
   ports:
     - 5602:80
   volumes:
-    - README.md:/.basic_auth_configured
-    - nginx/htpasswd:/app/.htpasswd
+    - ./README.md:/.basic_auth_configured
+    - ./nginx/htpasswd:/app/.htpasswd
   environment:
     INFLUXDB_HOST:
     INFLUXDB_NAME: graphite
