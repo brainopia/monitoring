@@ -7,7 +7,7 @@ elasticsearch:
     ES_HEAP_SIZE:
 
 logstash:
-  image: smartprocure/logstash
+  image: logstash
   command: -f /etc/logstash/conf
   links:
     - elasticsearch
@@ -26,7 +26,7 @@ kibana:
     - ./kibana/kibana.yml:/opt/kibana/config/kibana.yml
 
 nginx:
-  image: dockerfile/nginx
+  image: nginx
   command: nginx
   links:
     - kibana
