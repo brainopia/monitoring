@@ -41,7 +41,9 @@ kibana:
 
 grafana:
   image: grafana/grafana
-  command: cfg:default.auth.basic.enabled=false
+  command: cfg:default.users.allow_sign_up=false
+  ports:
+    - 3000:5602
   volumes:
     - ./grafana/data:/var/lib/grafana
 
@@ -52,7 +54,6 @@ nginx:
     - grafana
   ports:
     - 5601:5601
-    - 5602:5602
   volumes:
     - ./nginx/auth.conf:/etc/nginx/conf.d/proxy.conf
     - ./nginx/htpasswd:/etc/nginx/htpasswd
