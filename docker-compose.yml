@@ -45,6 +45,9 @@ influxdb:
     - ./influxdb/data:/data
   environment:
     GRAPHITE_DB: graphite
+    PRE_CREATE_DB: graphite
+    ADMIN_USER:
+    INFLUXDB_INIT_PWD:
 
 grafana:
   build: grafana
