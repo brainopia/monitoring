@@ -50,15 +50,9 @@ influxdb:
     INFLUXDB_INIT_PWD:
 
 grafana:
-  build: grafana
+  image: grafana/grafana
+  command: cfg:default.auth.basic.enabled=false
   ports:
-    - 5602:80
+    - 3000:80
   volumes:
-    - ./README.md:/.basic_auth_configured
-    - ./nginx/htpasswd:/app/.htpasswd
-  environment:
-    INFLUXDB_HOST:
-    INFLUXDB_NAME: graphite
-    INFLUXDB_USER:
-    INFLUXDB_PASS:
-    INFLUXDB_IS_GRAFANADB: "true"
+    - ./grafana/data:/var/lib/grafana
