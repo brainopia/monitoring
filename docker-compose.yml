@@ -1,7 +1,6 @@
 influxdb:
   image: tutum/influxdb
   ports:
-    - 8083:8083
     - 8086:8086
     - 2003:2003
   volumes:
@@ -51,9 +50,10 @@ nginx:
   image: nginx
   links:
     - kibana
-    - grafana
+    - influxdb
   ports:
     - 5601:5601
+    - 8083:8083
   volumes:
     - ./nginx/auth.conf:/etc/nginx/conf.d/proxy.conf
     - ./nginx/htpasswd:/etc/nginx/htpasswd
