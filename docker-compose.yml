@@ -43,7 +43,7 @@ grafana:
   image: grafana/grafana
   command: cfg:default.users.allow_sign_up=false
   ports:
-    - 3000:5602
+    - 5602:3000
   volumes:
     - ./grafana/data:/var/lib/grafana
 
