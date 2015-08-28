@@ -42,8 +42,6 @@ kibana:
 grafana:
   image: grafana/grafana
   command: cfg:default.auth.basic.enabled=false
-  ports:
-    - 3000:80
   volumes:
     - ./grafana/data:/var/lib/grafana
 
