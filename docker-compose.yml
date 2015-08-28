@@ -31,6 +31,7 @@ nginx:
     - kibana
   ports:
     - 5601:5601
+    - 5602:5602
   volumes:
     - ./nginx/auth.conf:/etc/nginx/sites-enabled/default
     - ./nginx/htpasswd:/etc/nginx/htpasswd
