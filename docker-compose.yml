@@ -1,3 +1,17 @@
+influxdb:
+  image: tutum/influxdb
+  ports:
+    - 8083:8083
+    - 8086:8086
+    - 2003:2003
+  volumes:
+    - ./influxdb/data:/data
+  environment:
+    GRAPHITE_DB: graphite
+    PRE_CREATE_DB: graphite
+    ADMIN_USER:
+    INFLUXDB_INIT_PWD:
+
 elasticsearch:
   build: elasticsearch
   volumes:
@@ -25,31 +39,6 @@ kibana:
   volumes:
     - ./kibana/kibana.yml:/opt/kibana/config/kibana.yml
 
-nginx:
-  image: nginx
-  links:
-    - kibana
-  ports:
-    - 5601:5601
-    - 5602:5602
-  volumes:
-    - ./nginx/auth.conf:/etc/nginx/conf.d/proxy.conf
-    - ./nginx/htpasswd:/etc/nginx/htpasswd
-
-influxdb:
-  image: tutum/influxdb
-  ports:
-    - 8083:8083
-    - 8086:8086
-    - 2003:2003
-  volumes:
-    - ./influxdb/data:/data
-  environment:
-    GRAPHITE_DB: graphite
-    PRE_CREATE_DB: graphite
-    ADMIN_USER:
-    INFLUXDB_INIT_PWD:
-
 grafana:
   image: grafana/grafana
   command: cfg:default.auth.basic.enabled=false
@@ -57,3 +46,15 @@ grafana:
     - 3000:80
   volumes:
     - ./grafana/data:/var/lib/grafana
+
+nginx:
+  image: nginx
+  links:
+    - kibana
+    - grafana
+  ports:
+    - 5601:5601
+    - 5602:5602
+  volumes:
+    - ./nginx/auth.conf:/etc/nginx/conf.d/proxy.conf
+    - ./nginx/htpasswd:/etc/nginx/htpasswd
