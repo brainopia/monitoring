@@ -33,7 +33,7 @@ nginx:
     - 5601:5601
     - 5602:5602
   volumes:
-    - ./nginx/auth.conf:/etc/nginx/sites-enabled/default
+    - ./nginx/auth.conf:/etc/nginx/conf.d/proxy.conf
     - ./nginx/htpasswd:/etc/nginx/htpasswd
 
 influxdb:
