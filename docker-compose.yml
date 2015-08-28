@@ -27,7 +27,6 @@ kibana:
 
 nginx:
   image: nginx
-  command: nginx
   links:
     - kibana
   ports:
