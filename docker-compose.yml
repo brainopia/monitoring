@@ -40,8 +40,6 @@ kibana:
 grafana:
   image: grafana/grafana
   command: cfg:default.users.allow_sign_up=false
-  ports:
-    - 5602:3000
   volumes:
     - ./grafana/data:/var/lib/grafana
 
@@ -54,12 +52,14 @@ nginx:
   image: nginx
   links:
     - kibana
+    - grafana
     - influxdb
     - chronograf
   ports:
     - 5601:5601
+    - 5602:5602
     - 5603:5603
-    - 8083:8083
+    - 5604:5604
   volumes:
     - ./nginx/auth.conf:/etc/nginx/conf.d/proxy.conf
     - ./nginx/htpasswd:/etc/nginx/htpasswd
