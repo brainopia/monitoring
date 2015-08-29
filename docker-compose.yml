@@ -56,6 +56,7 @@ nginx:
     - influxdb
     - chronograf
   ports:
+    - 80:80
     - 5601:5601
     - 5602:5602
     - 5603:5603
