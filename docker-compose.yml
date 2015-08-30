@@ -35,6 +35,8 @@ kibana:
   image: kibana
   links:
     - elasticsearch
+  environment:
+    ELASTICSEARCH_URL: http://elasticsearch:9200
 
 grafana:
   image: grafana/grafana
