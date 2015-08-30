@@ -10,6 +10,7 @@ influxdb:
     PRE_CREATE_DB: graphite
     ADMIN_USER:
     INFLUXDB_INIT_PWD:
+
 elasticsearch:
   build: elasticsearch
   volumes:
@@ -31,11 +32,9 @@ logstash:
     LS_HEAP_SIZE:
 
 kibana:
-  build: kibana
+  image: kibana
   links:
     - elasticsearch
-  volumes:
-    - ./kibana/kibana.yml:/opt/kibana/config/kibana.yml
 
 grafana:
   image: grafana/grafana
