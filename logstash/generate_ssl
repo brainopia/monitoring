@@ -1,4 +1,4 @@
 #!/bin/sh
 
-openssl req -x509 -subj '/CN=*.example.org/' -nodes -newkey rsa:2048 -keyout logstash-forwarder.key -out logstash-forwarder.crt
+openssl req -x509 -subj '/CN=*.example.org/' -nodes -newkey rsa:2048 -keyout logstash-forwarder.key -out logstash-forwarder.crt -days 3560
 mv logstash-forwarder.* logstash/
